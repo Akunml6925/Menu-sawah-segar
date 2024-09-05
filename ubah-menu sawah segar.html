@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>menu sawah segar</title>
+
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+</head>
+
+<body class="m-4">
+  <h1>Ubah Data </h1>
+
+  <form class="mb-3">
+    <div class="mb-3">
+      <label class="form-label">menu sawah segar</label>
+      <input type="text" class="form-control" id="input-nama">
+    </div>
+    <div class="mb-3">
+      <label class="form-label">makanan</label>
+      <input type="text" class="form-control" id="input-makanan">
+    </div>
+    <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
+  </form>
+
+  <a class="mt-1" href="index.html">Lihat menu sawah segar</a>
+
+  <script type="module">
+    import { ambilmenu sawah segar, ubahmenu sawah segar } from './main.js';
+
+    let tombolUbah = document.getElementById('tombol-ubah');
+    let elemenmenu sawah segar = document.getElementById('input-makanan');
+    let elemenminuman = document.getElementById('input-minuman');
+    const queryString = window.location.search
+    const parameterURL = new URLSearchParams(queryString);
+    const docId = parameterURL.get('docId')
+    const pembeli = await ambilmenu(docId);
+    
+    elemenmakanan.value = pembeli.makanan;
+    elemenminuman.value = pembeli.minuman;
+
+
+    tombolUbah.addEventListener('click', async function(el) {
+      el.preventDefault();
+      await ubahmenu(docId, elemenmakanan.value, elemenminuman.value);
+      window.location.href = 'index.html';
+    });
+  </script>
+</body>
+
+</html>
