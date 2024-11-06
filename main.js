@@ -28,7 +28,7 @@ const db = getFirestore(app);
 
 export async function ambilDaftarmenu() {
   const refDokumen = collection(db, "menu sawah segar");
-  const kueri = query(refDokumen, orderBy("nama"));
+  const kueri = query(refDokumen, orderBy("makanan"));
   const cuplikanKueri = await getDocs(kueri);
 
   let hasil = [];
@@ -36,7 +36,7 @@ export async function ambilDaftarmenu() {
     hasil.push({
       id: dok.id,
       makanan: dok.data().makanan,
-      minuman: dok.data().minuman,
+      harga: dok.data().harga,
     });
   });
 
@@ -49,11 +49,11 @@ export function formatAngka(x) {
   return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
-export async function tambahmenu(makanan, minuman,) {
+export async function tambahmenu(makanan, harga,) {
   try {
     const dokRef = await addDoc(collection(db, 'menu sawah segar'), {
       makanan: makanan,
-      minuman: minuman
+      harga: harga
     });
     console.log('berhasil menembah menu sawah segar ' + dokRef.id);
   } catch (e) {
@@ -65,10 +65,10 @@ export async function hapusmenu(docId) {
   await deleteDoc(doc(db, "menu sawah segar", docId));
 }
 
-export async function ubahmenu(docId,makanan, minuman,) {
+export async function ubahmenu(docId,makanan, harga,) {
   await updateDoc(doc(db, "menu sawah segar", docId), {
     makanan: makanan,
-    minuman: minuman
+    harga: harga
   });
 }
 

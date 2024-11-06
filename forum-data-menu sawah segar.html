@@ -21,8 +21,8 @@
          <input type="text" class="form-control" id="input-makanan">
        </div>
           <div class="mb-3">
-         <label class="form-label">minuman</label>
-         <input type="text" class="form-control" id="input-minuman">
+         <label class="form-label">harga</label>
+         <input type="text" class="form-control" id="input-harga">
        </div>
        <button type="submit" class="btn btn-primary" id="tombol-tambah">Simpan</button>
      </form>
@@ -30,14 +30,14 @@
    <a href="index.html">Daftar menu sawah segar</a>
    
    <script type="module">
-     import { tambahmenu sawah segar } from './main.js';
+     import { tambahmenu } from './main.js';
      
      let tombolTambah = document.getElementById('tombol-tambah');
      let elemenmakanan = document.getElementById('input-makanan');
-     let elemenminuman = document.getElementById('input-minuman');
+     let elemenharga = document.getElementById('input-harga');
      tombolTambah.addEventListener('click', async function (e) {
        e.preventDefault();
-       await tambahmenu(elemenmakanan.value, elemenminuman.value );
+       await tambahmenu(elemenmakanan.value, elemenharga.value );
        window.location.href = 'index.html'
      })
    </script>

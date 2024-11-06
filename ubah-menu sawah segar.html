@@ -17,11 +17,11 @@
 
   <form class="mb-3">
     <div class="mb-3">
-      <label class="form-label">menu sawah segar</label>
+      <label class="form-label">makanan</label>
       <input type="text" class="form-control" id="input-nama">
     </div>
     <div class="mb-3">
-      <label class="form-label">makanan</label>
+      <label class="form-label">harga</label>
       <input type="text" class="form-control" id="input-makanan">
     </div>
     <button type="submit" class="btn btn-primary" id="tombol-ubah">Ubah</button>
@@ -30,23 +30,23 @@
   <a class="mt-1" href="index.html">Lihat menu sawah segar</a>
 
   <script type="module">
-    import { ambilmenu sawah segar, ubahmenu sawah segar } from './main.js';
+    import { ambilmenu , ubahmenu  } from './main.js';
 
     let tombolUbah = document.getElementById('tombol-ubah');
-    let elemenmenu sawah segar = document.getElementById('input-makanan');
-    let elemenminuman = document.getElementById('input-minuman');
+    let elemenmenmakana = document.getElementById('input-makanan');
+    let elemenharga = document.getElementById('input-harga');
     const queryString = window.location.search
     const parameterURL = new URLSearchParams(queryString);
     const docId = parameterURL.get('docId')
     const pembeli = await ambilmenu(docId);
     
     elemenmakanan.value = pembeli.makanan;
-    elemenminuman.value = pembeli.minuman;
+    elemenharga.value = pembeli.harga;
 
 
     tombolUbah.addEventListener('click', async function(el) {
       el.preventDefault();
-      await ubahmenu(docId, elemenmakanan.value, elemenminuman.value);
+      await ubahmenu(docId, elemenmakanan.value, elemenharga.value);
       window.location.href = 'index.html';
     });
   </script>
